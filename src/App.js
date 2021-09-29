@@ -9,9 +9,9 @@ import { resetTodos, selectTodoList } from "./features/todoSlice";
 function App() {
   const todoList = useSelector(selectTodoList);
   const dispatch = useDispatch();
-  const handleReset = () =>{
+  const handleReset = () => {
     dispatch(resetTodos());
-  }
+  };
 
   return (
     <div className="app">
@@ -23,7 +23,13 @@ function App() {
           ))}
         </div>
         <Input />
-        <Button style={{marginTop: "15px"}} onClick={handleReset} variant="contained" > Reset </Button>
+        <Button
+          style={{ marginTop: "15px" }}
+          onClick={handleReset}
+          variant="contained"
+        >
+          Reset
+        </Button>
       </div>
     </div>
   );
