@@ -8,13 +8,8 @@ function Input() {
   const dispatch = useDispatch();
 
   const addTodo = () => {
-    dispatch(
-      saveTodo({
-        item: input,
-        done: false,
-        id: Date.now(),
-      })
-    );
+    const id = Date.now();
+    dispatch(saveTodo({ id: id, item: input, done: false}));
     setInput("");
   };
 

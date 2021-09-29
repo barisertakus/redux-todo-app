@@ -14,11 +14,14 @@ const todoSlice = createSlice({
 
     setDone: (state, action) => {
       state.todoList.map((todo) =>
-        action.payload === todo.id && todo.done
-          ? (todo.done = false)
-          : (todo.done = true)
+        action.payload === todo.id
+          ? todo.done
+            ? (todo.done = false)
+            : (todo.done = true)
+          : todo // do nothing
       );
     },
+
   },
 });
 
