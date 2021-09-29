@@ -13,19 +13,23 @@ const todoSlice = createSlice({
     },
 
     setDone: (state, action) => {
-      state.todoList.map((todo) =>
-        action.payload === todo.id
-          ? todo.done
-            ? (todo.done = false)
-            : (todo.done = true)
-          : todo // do nothing
+      state.todoList.map(
+        (todo) =>
+          action.payload === todo.id
+            ? todo.done
+              ? (todo.done = false)
+              : (todo.done = true)
+            : todo // do nothing
       );
     },
 
+    resetTodos: (state, action) => {
+      state.todoList = [];
+    },
   },
 });
 
-export const { saveTodo, setDone } = todoSlice.actions;
+export const { saveTodo, setDone, resetTodos } = todoSlice.actions;
 
 export const selectTodoList = (state) => state.todos.todoList;
 

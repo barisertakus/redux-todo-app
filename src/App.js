@@ -1,12 +1,17 @@
+import { Button } from "@mui/material";
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import "./App.css";
 import Input from "./components/Input";
 import TodoItem from "./components/TodoItem";
-import { selectTodoList } from "./features/todoSlice";
+import { resetTodos, selectTodoList } from "./features/todoSlice";
 
 function App() {
   const todoList = useSelector(selectTodoList);
+  const dispatch = useDispatch();
+  const handleReset = () =>{
+    dispatch(resetTodos());
+  }
 
   return (
     <div className="app">
@@ -18,6 +23,7 @@ function App() {
           ))}
         </div>
         <Input />
+        <Button style={{marginTop: "15px"}} onClick={handleReset} variant="contained" > Reset </Button>
       </div>
     </div>
   );
