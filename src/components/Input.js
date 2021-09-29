@@ -1,3 +1,4 @@
+import { Button } from "@mui/material";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { saveTodo } from "../features/todoSlice";
@@ -20,7 +21,7 @@ function Input() {
   return (
     <div className="input">
       <input type="text" value={input} onChange={handleChange} />
-      <button onClick={addTodo}>Add</button>
+      <Button variant="contained" onClick={addTodo}>Add</Button>
     </div>
   );
 }
