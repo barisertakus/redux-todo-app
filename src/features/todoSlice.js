@@ -10,7 +10,7 @@ const todoSlice = createSlice({
   reducers: {
     saveTodo: (state, action) => {
       state.todoList.push(action.payload);
-      localStorage.setItem("todoList", JSON.stringify(state.todoList))
+      updateLocalStorage(state.todoList)
     },
 
     setDone: (state, action) => {
@@ -22,6 +22,7 @@ const todoSlice = createSlice({
               : (todo.done = true)
             : todo // do nothing
       );
+      updateLocalStorage(state.todoList)
     },
 
     resetTodos: (state, action) => {
@@ -34,5 +35,9 @@ const todoSlice = createSlice({
 export const { saveTodo, setDone, resetTodos } = todoSlice.actions;
 
 export const selectTodoList = (state) => state.todos.todoList;
+
+const updateLocalStorage = (todoList) => {
+  localStorage.setItem("todoList", JSON.stringify(todoList));
+}
 
 export default todoSlice.reducer;
